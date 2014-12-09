@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MarkEditWindow</class>
+ <widget class="QMainWindow" name="MarkEditWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>978</width>
+    <height>538</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MarkEditWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QSplitter" name="splitter_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitter">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QTreeView" name="FileSystemTree"/>
+       <widget class="QListView" name="OpenDocumentsList">
+        <property name="cursor" stdset="0">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QSplitter" name="Editor_Preview_Splitter">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QPlainTextEdit" name="MarkdownEditor">
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+       </widget>
+       <widget class="QWebView" name="MarkdownPreview">
+        <property name="url">
+         <url>
+          <string>about:blank</string>
+         </url>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>978</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;Document</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSaveAs"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose"/>
+    <addaction name="actionCloseAll"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+    <addaction name="actionCopy"/>
+    <addaction name="actionCut"/>
+    <addaction name="actionPaste"/>
+    <addaction name="separator"/>
+    <addaction name="actionSelectAll"/>
+    <addaction name="actionCopyAsHTML"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="actionVertical"/>
+    <addaction name="actionHorizontal"/>
+    <addaction name="separator"/>
+    <addaction name="actionFileExplorer"/>
+    <addaction name="actionDocumentsList"/>
+    <addaction name="actionMarkdownEditor"/>
+    <addaction name="actionHTMLPreview"/>
+    <addaction name="separator"/>
+    <addaction name="actionRefresh"/>
+    <addaction name="actionSetCustomStylesheet"/>
+    <addaction name="separator"/>
+    <addaction name="actionStopAutoPreview"/>
+    <addaction name="actionUpdateHTMLView"/>
+    <addaction name="separator"/>
+    <addaction name="actionEnlargeFont"/>
+    <addaction name="actionShrinkFont"/>
+   </widget>
+   <widget class="QMenu" name="menuFormat">
+    <property name="title">
+     <string>&amp;Format</string>
+    </property>
+    <addaction name="actionFormatItalic"/>
+    <addaction name="actionFormatBold"/>
+    <addaction name="actionFormatStrikethrough"/>
+   </widget>
+   <widget class="QMenu" name="menuInsert">
+    <property name="title">
+     <string>&amp;Insert</string>
+    </property>
+    <widget class="QMenu" name="menuHeader">
+     <property name="title">
+      <string>Header</string>
+     </property>
+     <addaction name="actionInsertHeadingOne"/>
+     <addaction name="actionInsertHeadingTwo"/>
+     <addaction name="actionInsertHeadingThree"/>
+     <addaction name="actionInsertHeadingFour"/>
+     <addaction name="actionInsertHeadingFive"/>
+     <addaction name="actionInsertHeadingSix"/>
+    </widget>
+    <addaction name="actionInsertImage"/>
+    <addaction name="actionInsertLink"/>
+    <addaction name="actionInsertTable"/>
+    <addaction name="actionOrderedList"/>
+    <addaction name="actionUnorderedList"/>
+    <addaction name="menuHeader"/>
+    <addaction name="actionCode"/>
+    <addaction name="actionBlockQuote"/>
+   </widget>
+   <widget class="QMenu" name="menuMarkdown">
+    <property name="title">
+     <string>&amp;Markdown</string>
+    </property>
+    <widget class="QMenu" name="menuExtensions">
+     <property name="title">
+      <string>Extensions</string>
+     </property>
+     <addaction name="actionEnableStrikethrough"/>
+     <addaction name="actionEnableSuperscript"/>
+     <addaction name="actionEnableLinks"/>
+     <addaction name="actionEnableAutolinks"/>
+     <addaction name="actionEnableImages"/>
+     <addaction name="actionEnableTables"/>
+     <addaction name="actionEnableSmartypants"/>
+     <addaction name="actionEnableDefinitionList"/>
+     <addaction name="actionEnableAlphabeticLists"/>
+     <addaction name="actionEnableFootnotes"/>
+    </widget>
+    <addaction name="menuExtensions"/>
+    <addaction name="actionExportAsPDF"/>
+    <addaction name="actionExportAsHTML"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionMarkdownDocumentation"/>
+    <addaction name="actionReleaseNotes"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuFormat"/>
+   <addaction name="menuInsert"/>
+   <addaction name="menuMarkdown"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNew"/>
+   <addaction name="actionOpen"/>
+   <addaction name="actionSave"/>
+   <addaction name="actionSaveAs"/>
+   <addaction name="separator"/>
+   <addaction name="actionUndo"/>
+   <addaction name="actionRedo"/>
+   <addaction name="separator"/>
+   <addaction name="actionCopy"/>
+   <addaction name="actionCut"/>
+   <addaction name="actionPaste"/>
+   <addaction name="separator"/>
+   <addaction name="actionRefresh"/>
+   <addaction name="actionEnlargeFont"/>
+   <addaction name="actionShrinkFont"/>
+   <addaction name="separator"/>
+   <addaction name="actionFormatBold"/>
+   <addaction name="actionFormatItalic"/>
+   <addaction name="actionFormatStrikethrough"/>
+   <addaction name="separator"/>
+   <addaction name="actionInsertLink"/>
+   <addaction name="actionInsertImage"/>
+   <addaction name="actionInsertTable"/>
+   <addaction name="actionOrderedList"/>
+   <addaction name="actionUnorderedList"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionNew">
+   <property name="icon">
+    <iconset theme="document-new">
+     <normaloff>../Icons/document_new.png</normaloff>../Icons/document_new.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset theme="document-open">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset theme="document-save">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSaveAs">
+   <property name="icon">
+    <iconset theme="document-save-as">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Save &amp;as</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="icon">
+    <iconset theme="document-close">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionCloseAll">
+   <property name="text">
+    <string>Close all</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset theme="exit">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="icon">
+    <iconset theme="edit-undo">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="icon">
+    <iconset theme="edit-redo">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Z</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="icon">
+    <iconset theme="edit-copy">
+     <normaloff>../Icons/text_copy.png</normaloff>../Icons/text_copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="icon">
+    <iconset theme="edit-cut">
+     <normaloff>../Icons/text_cut.png</normaloff>../Icons/text_cut.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cu&amp;t</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="icon">
+    <iconset theme="edit-paste">
+     <normaloff>../Icons/text_paste.png</normaloff>../Icons/text_paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actionSelectAll">
+   <property name="text">
+    <string>Select &amp;all</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionCopyAsHTML">
+   <property name="text">
+    <string>Copy as HTML</string>
+   </property>
+  </action>
+  <action name="actionRefresh">
+   <property name="icon">
+    <iconset theme="view-refresh">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Refresh</string>
+   </property>
+  </action>
+  <action name="actionSetCustomStylesheet">
+   <property name="text">
+    <string>Set custom stylesheet</string>
+   </property>
+  </action>
+  <action name="actionStopAutoPreview">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Stop auto-preview</string>
+   </property>
+  </action>
+  <action name="actionUpdateHTMLView">
+   <property name="text">
+    <string>Update HTML view</string>
+   </property>
+  </action>
+  <action name="actionEnlargeFont">
+   <property name="icon">
+    <iconset theme="zoom-in">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Enlarge font</string>
+   </property>
+  </action>
+  <action name="actionShrinkFont">
+   <property name="icon">
+    <iconset theme="zoom-out">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Shrink font</string>
+   </property>
+  </action>
+  <action name="actionFormatItalic">
+   <property name="icon">
+    <iconset theme="format-text-italic">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Italic</string>
+   </property>
+  </action>
+  <action name="actionFormatBold">
+   <property name="icon">
+    <iconset theme="format-text-bold">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Bold</string>
+   </property>
+  </action>
+  <action name="actionFormatStrikethrough">
+   <property name="icon">
+    <iconset theme="format-text-strikethrough">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Strikethrough</string>
+   </property>
+  </action>
+  <action name="actionInsertImage">
+   <property name="icon">
+    <iconset theme="insert-image">
+     <normaloff>../Icons/insert_image.png</normaloff>../Icons/insert_image.png</iconset>
+   </property>
+   <property name="text">
+    <string>Image</string>
+   </property>
+  </action>
+  <action name="actionInsertLink">
+   <property name="icon">
+    <iconset theme="insert-link">
+     <normaloff>../Icons/insert_link.png</normaloff>../Icons/insert_link.png</iconset>
+   </property>
+   <property name="text">
+    <string>Link</string>
+   </property>
+  </action>
+  <action name="actionInsertTable">
+   <property name="icon">
+    <iconset theme="insert-table">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Table</string>
+   </property>
+  </action>
+  <action name="actionOrderedList">
+   <property name="icon">
+    <iconset theme="format-list-ordered">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Ordered list</string>
+   </property>
+  </action>
+  <action name="actionUnorderedList">
+   <property name="icon">
+    <iconset theme="format-list-unordered">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Unordered list</string>
+   </property>
+  </action>
+  <action name="actionInsertHeadingOne">
+   <property name="text">
+    <string>Heading 1</string>
+   </property>
+  </action>
+  <action name="actionInsertHeadingTwo">
+   <property name="text">
+    <string>Heading 2</string>
+   </property>
+  </action>
+  <action name="actionInsertHeadingThree">
+   <property name="text">
+    <string>Heading 3</string>
+   </property>
+  </action>
+  <action name="actionInsertHeadingFour">
+   <property name="text">
+    <string>Heading 4</string>
+   </property>
+  </action>
+  <action name="actionInsertHeadingFive">
+   <property name="text">
+    <string>Heading 5</string>
+   </property>
+  </action>
+  <action name="actionInsertHeadingSix">
+   <property name="text">
+    <string>Heading 6</string>
+   </property>
+  </action>
+  <action name="actionCode">
+   <property name="text">
+    <string>Code</string>
+   </property>
+  </action>
+  <action name="actionBlockQuote">
+   <property name="text">
+    <string>BlockQuote</string>
+   </property>
+  </action>
+  <action name="actionEnableStrikethrough">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Strikethrough</string>
+   </property>
+  </action>
+  <action name="actionEnableSuperscript">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Superscript</string>
+   </property>
+  </action>
+  <action name="actionEnableLinks">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Links</string>
+   </property>
+  </action>
+  <action name="actionEnableAutolinks">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Autolinks</string>
+   </property>
+  </action>
+  <action name="actionEnableImages">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Images</string>
+   </property>
+  </action>
+  <action name="actionEnableTables">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Tables</string>
+   </property>
+  </action>
+  <action name="actionEnableSmartypants">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Smartypants</string>
+   </property>
+  </action>
+  <action name="actionEnableDefinitionList">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Definition lists</string>
+   </property>
+  </action>
+  <action name="actionEnableAlphabeticLists">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Alphabetic lists</string>
+   </property>
+  </action>
+  <action name="actionEnableFootnotes">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Footnotes</string>
+   </property>
+  </action>
+  <action name="actionExportAsPDF">
+   <property name="text">
+    <string>Export as PDF</string>
+   </property>
+  </action>
+  <action name="actionExportAsHTML">
+   <property name="text">
+    <string>Export as HTML</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+  </action>
+  <action name="actionMarkdownDocumentation">
+   <property name="text">
+    <string>Markdown documentation</string>
+   </property>
+  </action>
+  <action name="actionFileExplorer">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>File explorer</string>
+   </property>
+  </action>
+  <action name="actionDocumentsList">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Documents list</string>
+   </property>
+  </action>
+  <action name="actionMarkdownEditor">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Markdown editor</string>
+   </property>
+  </action>
+  <action name="actionHTMLPreview">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>HTML preview</string>
+   </property>
+  </action>
+  <action name="actionReleaseNotes">
+   <property name="text">
+    <string>Release notes</string>
+   </property>
+  </action>
+  <action name="actionVertical">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Vertical</string>
+   </property>
+  </action>
+  <action name="actionHorizontal">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Horizontal</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKitWidgets/QWebView</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
