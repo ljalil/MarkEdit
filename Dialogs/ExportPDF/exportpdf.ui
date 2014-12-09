@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ExportPDF</class>
+ <widget class="QDialog" name="ExportPDF">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>418</width>
+    <height>195</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Export as PDF document</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="2" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="Output_Label">
+       <property name="text">
+        <string>Output</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="OutputFile_LineEdit">
+       <property name="placeholderText">
+        <string>Path of output file</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="chooseFile_ToolButton">
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Settings</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="2" column="0">
+       <widget class="QLabel" name="DocumentSize_Label">
+        <property name="text">
+         <string>Document size</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="DocumentSize_ComboBox">
+        <item>
+         <property name="text">
+          <string>A4 (210 x 297 mm)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>A5 (148 x 210 mm)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>A6 (105 x 148 mm)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>A7 (74 x 105 mm)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Executive</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Folio</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ledger</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Legal</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Letter</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Tabloid</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Note</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Quarto</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Postcard</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>DoublePostcard</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="Color_ComboBox">
+        <item>
+         <property name="text">
+          <string>Colored</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Gray scale</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="Orientation_ComboBox">
+        <item>
+         <property name="text">
+          <string>Vertical</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Horizontal</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Orientation</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="Color_Label">
+        <property name="text">
+         <string>Color</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="2">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="2">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
