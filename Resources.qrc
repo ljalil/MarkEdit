@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Stylesheet/default.css</file>
+        <file>Pixmap/AppIcon/app_icon64.png</file>
+        <file>Pixmap/AppIcon/app_icon80.png</file>
+        <file>Documents/MarkdownDocumentation.md</file>
+    </qresource>
+</RCC>
